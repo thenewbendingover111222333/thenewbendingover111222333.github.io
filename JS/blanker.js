@@ -5,18 +5,22 @@ if (window !== window.top || (buttonEnabled && !isMainTab)) {
     document.getElementById("blanker").style.display = "none";
 }
 
-function checkPopups() {
-    var popup = window.open("", "_blank", "width=1,height=1");
-    if (!popup || popup.closed || typeof popup.closed == "undefined" || popup.outerWidth === 0) {
-        document.getElementById("popupWarning").style.display = "";
-        setTimeout(() => {
-            document.getElementById("popupWarning").style.display = "none";
-        }, 3000);
-        return false;
-    }
-    popup.close();
-    return true;
+function checkPopups(callback) {
+    var popup = window.open("https://bendover111222333444.onrender.com/popup-check", "_blank");
+    setTimeout(function() {
+        if (!popup || popup.closed) {
+            document.getElementById("popupWarning").style.display = "";
+            setTimeout(() => {
+                document.getElementById("popupWarning").style.display = "none";
+            }, 3000);
+            callback(false);
+        } else {
+            popup.close();
+            callback(true);
+        }
+    }, 1000);
 }
+
 function getCloakUrl() {
     var input = document.getElementById("blankerSearch");
     var val = input && input.value.trim();
