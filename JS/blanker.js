@@ -7,18 +7,16 @@ if (window !== window.top || (buttonEnabled && !isMainTab)) {
 
 function checkPopups() {
     var popup = window.open("", "_blank", "width=1,height=1");
-    if (!popup || popup.closed || typeof popup.closed == "undefined") {
+    if (!popup || popup.closed || typeof popup.closed == "undefined" || popup.outerWidth === 0) {
         document.getElementById("popupWarning").style.display = "";
         setTimeout(() => {
             document.getElementById("popupWarning").style.display = "none";
-        }, 1000);
-        console.log("USE POPUPS");
+        }, 3000);
         return false;
     }
-    setTimeout(function() { popup.close(); }, 500);
+    popup.close();
     return true;
 }
-
 function getCloakUrl() {
     var input = document.getElementById("blankerSearch");
     var val = input && input.value.trim();
