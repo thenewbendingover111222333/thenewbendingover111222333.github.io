@@ -1,8 +1,8 @@
 var buttonEnabled = getCookie("buttonEnabled")
 
-function openPopupCloaked(url) {
+function openPopupCloaked(url, cloakedUrl) {
 
-    const popup = window.open("about:blank", "_blank");
+    const popup = window.open(cloakedUrl, "_blank");
     if (popup) {
         const iframe = popup.document.createElement("iframe");
         iframe.src = url;
@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (buttonEnabled) {
         button.style.color = trueColor;
         button.textContent = "Blanker On";
-        openPopupCloaked(window.location.href, true);
     } else {
         button.style.color = falseColor;
         button.textContent = "Blanker Off";
@@ -47,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function() {
             button.style.color = falseColor;
             button.textContent = "Blanker Off";
             setCookie("buttonEnabled", false)
-            window.open("bendover111222333444.onrender.com", _blank);
+            openPopupCloaked("https://bendover111222333444.onrender.com", "https://bendover111222333444.onrender.com")
         } else {
             buttonEnabled = true;
             button.style.color = trueColor;
             button.textContent = "Blanker On";
             setCookie("buttonEnabled", true)
-            openPopupCloaked(window.location.href);
+            openPopupCloaked("https://bendover111222333444.onrender.com", "about:blank");
         }
     });
 
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener("click", function(e) {
             if (buttonEnabled) {
                 e.preventDefault();
-                openPopupCloaked(this.href, false);
+                openPopupCloaked(this.href, "about:blank");
             }
         });
     });
@@ -77,8 +76,4 @@ if (popup) {
     popup.document.body.style.margin = "0";
     popup.document.body.appendChild(iframe);
     setTimeout(() => window.close(), 500);
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
