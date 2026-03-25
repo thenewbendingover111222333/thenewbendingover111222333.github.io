@@ -1,7 +1,8 @@
-var buttonEnabled = window.opener ? window.opener.buttonEnabled : false;
+var buttonEnabled = new URLSearchParams(window.location.search).get("blanker") === "true";
 
 function openPopupCloaked(url, cloakedUrl) {
-    const popup = window.open(cloakedUrl, "_blank");
+    const sep = cloakedUrl.includes("?") ? "&" : "?";
+    const popup = window.open(cloakedUrl + sep + "blanker=" + buttonEnabled, "_blank");
     if (!popup) return;
 
     popup.buttonEnabled = buttonEnabled;
