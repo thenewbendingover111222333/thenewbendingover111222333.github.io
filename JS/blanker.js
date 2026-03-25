@@ -19,13 +19,15 @@ function openPopupCloaked(url, cloakedUrl) {
             browserImg = "/images/newtab-edge.png";
         }
 
-        popup.onload = function() {
-            const favicon = popup.document.getElementById("favicon");
-            if (favicon) favicon.href = browserImg;
-            popup.document.title = "New Tab";
-        };
+        const doc = popup.document;
+        doc.open();
+        doc.write(`<!DOCTYPE html><html><head>
+            <link id="favicon" rel="icon" type="image/x-icon" href="${browserImg}">
+            <title>New Tab</title>
+            </head><body style="margin:0"></body></html>`);
+        doc.close();
 
-        setTimeout(() => window.close(), 500);
+        setTimeout(() => popup.opener && popup.opener.close(), 500);
     }
 
 }
