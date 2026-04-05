@@ -219,6 +219,8 @@ body.dark-mode {
     text-align: center;
     font-size: 17px;
     font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .clicks {
