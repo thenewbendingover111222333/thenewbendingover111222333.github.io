@@ -7,6 +7,14 @@ if (window !== window.top && !isMainTab) {
 }
 
 function openPopupCloaked(url, cloakedUrl) {
+    
+    const test = window.open("", "", "width=1,height=1")
+    if (!test || test.closed || typeof test.closed === "undefined") {
+        window.alert("TURN ON POPUPS: Chrome Settings → Privacy and security → Site settings → Pop-ups and redirects → Add site \n Firefox Settings → Privacy & Security → Permissions → Block pop-up windows → Exceptions → Add site \n Edge Settings → Cookies and site permissions → Pop-ups and redirects → Add site \n Safari Settings → Websites → Pop-up Windows → Allow for your site \n Brave Settings → Privacy and security → Site settings → Pop-ups and redirects → Add site (same as Chrome)");
+    } else {
+        test.close()
+    }
+
     const popup = window.open(cloakedUrl, "_blank");
     if (!popup) return;
 
