@@ -15,7 +15,7 @@ function openPopupCloaked(url, cloakedUrl) {
     } else {
         testpopup.close()
     }
-    }, 500)
+    }, 2500)
 
     const popup = window.open(cloakedUrl, "_blank");
     if (!popup) return;
