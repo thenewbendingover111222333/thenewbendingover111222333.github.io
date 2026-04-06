@@ -102,5 +102,5 @@ function clearData() {
 
 function infoData() {
     alert("PLEASE READ, If you want to copy from other sites that are now down keep in mind three things \n #1 If it doesnt have the copy and import data functions you will have to run the function i give next \n #2 The site is split in two for a while now meaning if you dont have a tab open of any game you cannot copy your game data. This applies to main page settings to but instead with main page. \n 3# To open console press F12 or right click and inspect then at the top navigate to console tab (Ignore the warning for pasting code if there is one) and paste and it should give a file you can import into the new sites \n With that use this function if you need to");
-    window.open("./html/script.html", "_blank");
+    window.open("https://main.bendover111222333444.great-site.net/html/script.html", "_blank");
 }
